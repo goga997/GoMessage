@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCThBB8E6_FNa7shEc_Zzf75ZZhcwE0-ps</string>
+	<key>GCM_SENDER_ID</key>
+	<string>974417849447</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.GoMessage</string>
+	<key>PROJECT_ID</key>
+	<string>gomessage-65760</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gomessage-65760.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:974417849447:ios:a730a9d5850492dd45f8c2</string>
+</dict>
+</plist>
