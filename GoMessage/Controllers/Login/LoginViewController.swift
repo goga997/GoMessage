@@ -97,7 +97,7 @@ class LoginViewController: UIViewController {
         let size = scrollView.width / 2
         
         logoImageView.frame = CGRect(x: (scrollView.width - size) / 2,
-                                     y: 80,
+                                     y: 40,
                                      width: size, height: size)
         emailField.frame = CGRect(x: 30,
                                   y: logoImageView.bottom + 20,
