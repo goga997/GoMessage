@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
-    
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -18,12 +18,10 @@ class RegisterViewController: UIViewController {
     
     private let profileImageView: UIImageView = {
         let imgView = UIImageView()
-        imgView.image = UIImage(systemName: "person")
+        imgView.image = UIImage(systemName: "person.circle")
         imgView.tintColor = .gray
         imgView.contentMode = .scaleAspectFit
         imgView.layer.masksToBounds = true
-        imgView.layer.borderWidth = 2
-        imgView.layer.borderColor = UIColor.black.cgColor
         return imgView
     }()
     
@@ -199,11 +197,30 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        //Firebase LogIn
+        //Firebase reg
+        DataBaseManager.shared.userExists(with: email) { [weak self] exists in
+            guard let strongSelf = self else { return }
+            guard !exists else {
+                //user already exist
+                strongSelf.alertUserLogInerror(message: "Looks like user account for that email adress already exists !")
+                return
+            }
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                guard authResult != nil, error == nil else {
+                    print("Error creating user")
+                    return
+                }
+                
+                DataBaseManager.shared.inserUser(with: ChatAppUser(firstName: firstName,
+                                                                   lastName: lastName,
+                                                                   emailAdress: email))
+                strongSelf.navigationController?.dismiss(animated: true)
+            }
+        }
     }
     
-    func alertUserLogInerror() {
-        let alert = UIAlertController(title: "Error", message: "Please complete all fields\nPassword should contains more than 6 characters", preferredStyle: .alert)
+    func alertUserLogInerror(message: String = "Please complete all fields\nPassword should contains more than 6 characters") {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
         present(alert, animated: true)
