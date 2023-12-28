@@ -13,6 +13,7 @@
 		DF15B9452B3D8F7700FE178B /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9442B3D8F7700FE178B /* VideoPlayerViewController.swift */; };
 		DF15B9472B3D8F9200FE178B /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9462B3D8F9200FE178B /* NewConversationViewController.swift */; };
 		DF15B9492B3D8F9C00FE178B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9482B3D8F9C00FE178B /* ProfileViewController.swift */; };
+		DF15B94C2B3D987900FE178B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B94B2B3D987900FE178B /* Extensions.swift */; };
 		DFEE2DAF2B3D8A0600225DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */; };
 		DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */; };
 		DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB22B3D8A0600225DA4 /* ConversationsViewController.swift */; };
@@ -27,6 +28,7 @@
 		DF15B9442B3D8F7700FE178B /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		DF15B9462B3D8F9200FE178B /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		DF15B9482B3D8F9C00FE178B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DF15B94B2B3D987900FE178B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DFEE2DAB2B3D8A0600225DA4 /* GoMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,8 +52,8 @@
 		DF15B94A2B3D904500FE178B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DF15B9402B3D8F4A00FE178B /* RegisterViewController.swift */,
 				DF15B93E2B3D8F3B00FE178B /* LoginViewController.swift */,
+				DF15B9402B3D8F4A00FE178B /* RegisterViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -126,6 +128,7 @@
 			children = (
 				DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */,
 				DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */,
+				DF15B94B2B3D987900FE178B /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				DF15B9472B3D8F9200FE178B /* NewConversationViewController.swift in Sources */,
 				DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */,
 				DF15B9452B3D8F7700FE178B /* VideoPlayerViewController.swift in Sources */,
+				DF15B94C2B3D987900FE178B /* Extensions.swift in Sources */,
 				DFEE2DAF2B3D8A0600225DA4 /* AppDelegate.swift in Sources */,
 				DF15B9492B3D8F9C00FE178B /* ProfileViewController.swift in Sources */,
 				DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */,
