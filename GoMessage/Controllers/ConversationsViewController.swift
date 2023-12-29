@@ -9,19 +9,22 @@ import UIKit
 import FirebaseAuth
 
 class ConversationsViewController: UIViewController {
-
+    
+    private let mainTableView = MainTableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         
+        setUpView()
+        setConstraints()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         
+        
         validateAuth()
     }
-
+    
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             let loginVC = LoginViewController()
@@ -29,6 +32,22 @@ class ConversationsViewController: UIViewController {
             nav.modalPresentationStyle = .fullScreen
             present(nav, animated: false)
         }
+    }
+    
+    private func setUpView() {
+        view.backgroundColor = .lightGray
+        view.addSubview(mainTableView)
+    }
+}
+
+extension ConversationsViewController {
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            mainTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }
 

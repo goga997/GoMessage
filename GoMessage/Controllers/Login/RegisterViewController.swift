@@ -106,12 +106,7 @@ class RegisterViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(didTapRegister))
-        
-        registerButton.addTarget(self, action: #selector(didLogInTapped), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(didRegisterTapped), for: .touchUpInside)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -172,13 +167,7 @@ class RegisterViewController: UIViewController {
                                       height: 42)
     }
     
-    @objc private func didTapRegister() {
-        let registerVC = RegisterViewController()
-        registerVC.title = "Create Account"
-        navigationController?.pushViewController(registerVC, animated: true)
-    }
-    
-    @objc private func didLogInTapped() {
+    @objc private func didRegisterTapped() {
         firstNameField.resignFirstResponder()
         lastNameField.resignFirstResponder()
         emailField.resignFirstResponder()
@@ -233,7 +222,7 @@ extension RegisterViewController: UITextFieldDelegate {
         if textField == emailField {
             passwordField.becomeFirstResponder()
         } else if textField == passwordField {
-            didLogInTapped()
+            didRegisterTapped()
         }
         
         return true
