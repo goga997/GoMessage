@@ -19,9 +19,9 @@ class MainTabBarController: UITabBarController {
         
         firstVC.title = "Chats"; secondVC.title = "Profile";
         
-        firstVC.navigationItem.largeTitleDisplayMode = .always
-        secondVC.navigationItem.largeTitleDisplayMode = .always
-        
+//        firstVC.navigationItem.largeTitleDisplayMode = .always
+//        secondVC.navigationItem.largeTitleDisplayMode = .always
+//        
         //-------------------------------------------------------------------------------------------
         let navController1 = UINavigationController(rootViewController: firstVC)
         let navController2 = UINavigationController(rootViewController: secondVC)
@@ -29,8 +29,8 @@ class MainTabBarController: UITabBarController {
         navController1.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(systemName: "house"), tag: 1)
         navController2.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
         
-        navController1.navigationBar.prefersLargeTitles = true
-        navController2.navigationBar.prefersLargeTitles = true
+//        navController1.navigationBar.prefersLargeTitles = true
+//        navController2.navigationBar.prefersLargeTitles = true
         
         setViewControllers([navController1, navController2], animated: true)
     }
