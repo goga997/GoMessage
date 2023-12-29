@@ -11,27 +11,35 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTabBar()
-        setItems()
+
+        let firstVC = ConversationsViewController()
+        let secondVC = ProfileViewController()
+        
+        firstVC.title = "Chats"; secondVC.title = "Profile";
+        
+        firstVC.navigationItem.largeTitleDisplayMode = .always
+        secondVC.navigationItem.largeTitleDisplayMode = .always
+        
+        //-------------------------------------------------------------------------------------------
+        let navController1 = UINavigationController(rootViewController: firstVC)
+        let navController2 = UINavigationController(rootViewController: secondVC)
+        
+        navController1.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(systemName: "house"), tag: 1)
+        navController2.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        
+        navController1.navigationBar.prefersLargeTitles = true
+        navController2.navigationBar.prefersLargeTitles = true
+        
+        setViewControllers([navController1, navController2], animated: true)
     }
     
     private func setupTabBar() {
-        tabBar.backgroundColor = .clear
-        tabBar.tintColor = .link
-        tabBar.unselectedItemTintColor = .white
-    }
-    
-    private func setItems() {
-        let convsVC = ConversationsViewController()
-        let profileVC = ProfileViewController()
-        setViewControllers([convsVC, profileVC], animated: true)
-        
-        guard let items = tabBar.items else {return}
-        items[0].title = "Conversations"
-        items[1].title = "Profile"
-        items[0].image = UIImage(systemName: "ellipsis.message.fill")
-        items[1].image = UIImage(systemName: "person")
-        
-//        UITabBarItem.appearance().setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 12) as Any], for: .normal)
+        tabBar.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        tabBar.tintColor = .red
+        tabBar.unselectedItemTintColor = .black
+//        tabBar.layer.borderWidth = 2
+//        tabBar.layer.borderColor = UIColor.black.cgColor
     }
 }
