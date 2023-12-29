@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -67,6 +69,19 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private lazy var googleButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Sign In with Google", for: .normal)
+        button.backgroundColor = .clear
+        button.setTitleColor(.systemOrange, for: .normal)
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        button.layer.borderWidth = 2
+        button.layer.borderColor = UIColor.systemOrange.cgColor
+        button.titleLabel?.font = .systemFont(ofSize: 18)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,6 +94,7 @@ class LoginViewController: UIViewController {
                                                             action: #selector(didTapRegister))
         
         logInButton.addTarget(self, action: #selector(didLogInTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(didTapGoogle), for: .touchUpInside)
         
         emailField.delegate = self
         passwordField.delegate = self
@@ -89,6 +105,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(logInButton)
+        scrollView.addSubview(googleButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -112,6 +129,9 @@ class LoginViewController: UIViewController {
                                    y: passwordField.bottom + 20,
                                    width: scrollView.width - 60,
                                    height: 42)
+        googleButton.frame = CGRect(x: 30, y: logInButton.bottom + 15,
+                                    width: scrollView.width - 60,
+                                    height: 42)
         
     }
     
@@ -148,6 +168,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @objc func didTapGoogle() {
+        signInWithGoogle()
+    }
+    
     func alertUserLogInerror() {
         let alert = UIAlertController(title: "Error", message: "Please complete all fields\nPassword should contains more than 6 characters", preferredStyle: .alert)
         
@@ -169,4 +193,45 @@ extension LoginViewController: UITextFieldDelegate {
         
         return true
     }
+}
+
+//MARK: - Google Sign In
+extension LoginViewController {
+    
+    func signInWithGoogle() {
+        //get app client ID
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        //sign In method goes here...
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { user, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let user = user?.user,
+                  let idToken = user.idToken else { return }
+            
+            let accesToken = user.accessToken
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString,
+                                                           accessToken: accesToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { res, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let user = res?.user else { return }
+                print(user)
+            }
+        }
+    }
+    
 }
