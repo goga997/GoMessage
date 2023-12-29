@@ -22,7 +22,8 @@ class ProfileViewController: UIViewController {
     
     @objc private func didTapLogOut() {
         
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "", message: "Are you sure you want to Log Out ?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] _ in
             guard let strongSelf = self else { return }
             do {
