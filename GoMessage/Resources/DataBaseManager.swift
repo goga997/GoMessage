@@ -30,13 +30,21 @@ extension DataBaseManager {
     }
     
     /// Inserts new User to dataBase
-    public func inserUser(with user: ChatAppUser) {
+    public func inserUser(with user: ChatAppUser, completion: @escaping (Bool) -> Void) {
         dataBase.child(user.safeEmail ).setValue([
             "first_name": user.firstName,
             "last_name": user.lastName
-        ])
+        ]) { error, _ in
+            guard error == nil else {
+                print("failed ot write to database")
+                completion(false)
+                return
+            }
+            
+            completion(true)
+        }
     }
-
+    
 }
 
 struct ChatAppUser {
@@ -49,5 +57,8 @@ struct ChatAppUser {
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
-    //    let profilePicture: String
+    
+    var profilePictureFileName: String {
+        return "\(safeEmail)_profile_picture.png"
+    }
 }
