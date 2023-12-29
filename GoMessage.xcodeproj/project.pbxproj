@@ -22,6 +22,7 @@
 		DF15B9812B3DD14200FE178B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9802B3DD14200FE178B /* FirebaseStorage */; };
 		DF15B9852B3DD42B00FE178B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF15B9842B3DD42A00FE178B /* GoogleService-Info.plist */; };
 		DF15B9872B3DE3B100FE178B /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9862B3DE3B100FE178B /* DataBaseManager.swift */; };
+		DF15B98D2B3E428800FE178B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B98C2B3E428800FE178B /* MainTabBarController.swift */; };
 		DFEE2DAF2B3D8A0600225DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */; };
 		DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */; };
 		DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB22B3D8A0600225DA4 /* ConversationsViewController.swift */; };
@@ -39,6 +40,7 @@
 		DF15B94B2B3D987900FE178B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DF15B9842B3DD42A00FE178B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF15B9862B3DE3B100FE178B /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		DF15B98C2B3E428800FE178B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DFEE2DAB2B3D8A0600225DA4 /* GoMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,35 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		DF15B9882B3E420100FE178B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF15B9892B3E420700FE178B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DF15B98A2B3E420D00FE178B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DF15B98B2B3E426D00FE178B /* NavigationModule */ = {
+			isa = PBXGroup;
+			children = (
+				DF15B98C2B3E428800FE178B /* MainTabBarController.swift */,
+			);
+			path = NavigationModule;
+			sourceTree = "<group>";
+		};
 		DFEE2DA22B3D8A0600225DA4 = {
 			isa = PBXGroup;
 			children = (
@@ -93,12 +124,13 @@
 		DFEE2DAD2B3D8A0600225DA4 /* GoMessage */ = {
 			isa = PBXGroup;
 			children = (
+				DF15B98B2B3E426D00FE178B /* NavigationModule */,
+				DF15B98A2B3E420D00FE178B /* Models */,
+				DF15B9892B3E420700FE178B /* ViewModels */,
+				DF15B9882B3E420100FE178B /* Views */,
 				DF15B9842B3DD42A00FE178B /* GoogleService-Info.plist */,
 				DFEE2DC92B3D8D1F00225DA4 /* Resources */,
 				DFEE2DC22B3D8CE300225DA4 /* Controllers */,
-				DFEE2DC82B3D8D1500225DA4 /* ViewModels */,
-				DFEE2DC72B3D8D1100225DA4 /* Models */,
-				DFEE2DC62B3D8D0C00225DA4 /* Views */,
 				DFEE2DB72B3D8A0800225DA4 /* Assets.xcassets */,
 				DFEE2DB92B3D8A0800225DA4 /* LaunchScreen.storyboard */,
 				DFEE2DBC2B3D8A0800225DA4 /* Info.plist */,
@@ -117,27 +149,6 @@
 				DF15B9482B3D8F9C00FE178B /* ProfileViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		DFEE2DC62B3D8D0C00225DA4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DFEE2DC72B3D8D1100225DA4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DFEE2DC82B3D8D1500225DA4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DFEE2DC92B3D8D1F00225DA4 /* Resources */ = {
@@ -235,6 +246,7 @@
 			files = (
 				DF15B93F2B3D8F3B00FE178B /* LoginViewController.swift in Sources */,
 				DF15B9412B3D8F4A00FE178B /* RegisterViewController.swift in Sources */,
+				DF15B98D2B3E428800FE178B /* MainTabBarController.swift in Sources */,
 				DF15B9472B3D8F9200FE178B /* NewConversationViewController.swift in Sources */,
 				DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */,
 				DF15B9452B3D8F7700FE178B /* VideoPlayerViewController.swift in Sources */,
