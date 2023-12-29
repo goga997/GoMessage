@@ -27,6 +27,13 @@
 		DF15B9942B3EDD9100FE178B /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9932B3EDD9100FE178B /* GoogleSignIn */; };
 		DF15B9962B3EDD9100FE178B /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9952B3EDD9100FE178B /* GoogleSignInSwift */; };
 		DF15B9982B3EDE5700FE178B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF15B9972B3EDE5700FE178B /* GoogleService-Info.plist */; };
+		DF15B99E2B3F1B9B00FE178B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B99D2B3F1B9B00FE178B /* Realm */; };
+		DF15B9A02B3F1B9B00FE178B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B99F2B3F1B9B00FE178B /* RealmSwift */; };
+		DF15B9A32B3F1C9600FE178B /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9A22B3F1C9600FE178B /* MessageKit */; };
+		DF15B9A62B3F1CFA00FE178B /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9A52B3F1CFA00FE178B /* JGProgressHUD */; };
+		DF15B9A92B3F1D2200FE178B /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9A82B3F1D2200FE178B /* SDWebImage */; };
+		DF15B9AB2B3F1D2200FE178B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9AA2B3F1D2200FE178B /* SDWebImageMapKit */; };
+		DF15B9AD2B3F218400FE178B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9AC2B3F218400FE178B /* ChatViewController.swift */; };
 		DFEE2DAF2B3D8A0600225DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */; };
 		DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */; };
 		DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB22B3D8A0600225DA4 /* ConversationsViewController.swift */; };
@@ -47,6 +54,7 @@
 		DF15B98E2B3EB1EB00FE178B /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		DF15B9902B3EB28600FE178B /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		DF15B9972B3EDE5700FE178B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF15B9AC2B3F218400FE178B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DFEE2DAB2B3D8A0600225DA4 /* GoMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,10 +72,16 @@
 				DF15B9612B3DD14200FE178B /* FirebaseDatabase in Frameworks */,
 				DF15B9672B3DD14200FE178B /* FirebaseFirestore in Frameworks */,
 				DF15B96B2B3DD14200FE178B /* FirebaseFirestoreSwift in Frameworks */,
+				DF15B9A32B3F1C9600FE178B /* MessageKit in Frameworks */,
+				DF15B9A62B3F1CFA00FE178B /* JGProgressHUD in Frameworks */,
 				DF15B9962B3EDD9100FE178B /* GoogleSignInSwift in Frameworks */,
 				DF15B95B2B3DD14200FE178B /* FirebaseAuth in Frameworks */,
 				DF15B9632B3DD14200FE178B /* FirebaseDatabaseSwift in Frameworks */,
+				DF15B99E2B3F1B9B00FE178B /* Realm in Frameworks */,
 				DF15B9812B3DD14200FE178B /* FirebaseStorage in Frameworks */,
+				DF15B9A92B3F1D2200FE178B /* SDWebImage in Frameworks */,
+				DF15B9A02B3F1B9B00FE178B /* RealmSwift in Frameworks */,
+				DF15B9AB2B3F1D2200FE178B /* SDWebImageMapKit in Frameworks */,
 				DF15B9942B3EDD9100FE178B /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				DFEE2DB22B3D8A0600225DA4 /* ConversationsViewController.swift */,
+				DF15B9AC2B3F218400FE178B /* ChatViewController.swift */,
 				DF15B94A2B3D904500FE178B /* Login */,
 				DF15B9422B3D8F6A00FE178B /* PhotoViewerViewController.swift */,
 				DF15B9442B3D8F7700FE178B /* VideoPlayerViewController.swift */,
@@ -205,6 +220,12 @@
 				DF15B9802B3DD14200FE178B /* FirebaseStorage */,
 				DF15B9932B3EDD9100FE178B /* GoogleSignIn */,
 				DF15B9952B3EDD9100FE178B /* GoogleSignInSwift */,
+				DF15B99D2B3F1B9B00FE178B /* Realm */,
+				DF15B99F2B3F1B9B00FE178B /* RealmSwift */,
+				DF15B9A22B3F1C9600FE178B /* MessageKit */,
+				DF15B9A52B3F1CFA00FE178B /* JGProgressHUD */,
+				DF15B9A82B3F1D2200FE178B /* SDWebImage */,
+				DF15B9AA2B3F1D2200FE178B /* SDWebImageMapKit */,
 			);
 			productName = GoMessage;
 			productReference = DFEE2DAB2B3D8A0600225DA4 /* GoMessage.app */;
@@ -237,6 +258,10 @@
 			packageReferences = (
 				DF15B94D2B3DD14200FE178B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				DF15B9922B3EDD9100FE178B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				DF15B99C2B3F1B9B00FE178B /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				DF15B9A12B3F1C9600FE178B /* XCRemoteSwiftPackageReference "MessageKit" */,
+				DF15B9A42B3F1CFA00FE178B /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				DF15B9A72B3F1D2200FE178B /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = DFEE2DAC2B3D8A0600225DA4 /* Products */;
 			projectDirPath = "";
@@ -278,6 +303,7 @@
 				DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */,
 				DF15B9912B3EB28600FE178B /* ChatCell.swift in Sources */,
 				DF15B9432B3D8F6A00FE178B /* PhotoViewerViewController.swift in Sources */,
+				DF15B9AD2B3F218400FE178B /* ChatViewController.swift in Sources */,
 				DF15B9872B3DE3B100FE178B /* DataBaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +545,38 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		DF15B99C2B3F1B9B00FE178B /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		DF15B9A12B3F1C9600FE178B /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		DF15B9A42B3F1CFA00FE178B /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+		DF15B9A72B3F1D2200FE178B /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -561,6 +619,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DF15B9922B3EDD9100FE178B /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		DF15B99D2B3F1B9B00FE178B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B99C2B3F1B9B00FE178B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		DF15B99F2B3F1B9B00FE178B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B99C2B3F1B9B00FE178B /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		DF15B9A22B3F1C9600FE178B /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B9A12B3F1C9600FE178B /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+		DF15B9A52B3F1CFA00FE178B /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B9A42B3F1CFA00FE178B /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		DF15B9A82B3F1D2200FE178B /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B9A72B3F1D2200FE178B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		DF15B9AA2B3F1D2200FE178B /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF15B9A72B3F1D2200FE178B /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

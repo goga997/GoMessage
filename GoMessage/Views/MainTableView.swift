@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MainTableViewProtocol: AnyObject {
+    func performPush()
+}
+
 class MainTableView: UITableView {
+    
+    weak var mainTableViewDelegate: MainTableViewProtocol?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -49,5 +55,11 @@ extension MainTableView: UITableViewDataSource {
 extension MainTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+        
+        mainTableViewDelegate?.performPush()
     }
 }
