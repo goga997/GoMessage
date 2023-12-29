@@ -9,6 +9,9 @@ xcuserdata/
 *.xcscmblueprint
 *.xccheckout
 
+# Xcode User Settings
+*.xcuserstate
+
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
 DerivedData/
@@ -89,6 +92,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-# Xcode User Settings
-*.xcuserstate
 
