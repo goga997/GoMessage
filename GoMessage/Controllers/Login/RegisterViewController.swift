@@ -211,7 +211,7 @@ class RegisterViewController: UIViewController {
                 }
                 
                 let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAdress: email)
-                DataBaseManager.shared.inserUser(with: chatUser, completion: { succes in
+                DataBaseManager.shared.insertUser(with: chatUser, completion: { succes in
                     if succes {
                         //upload image
                         guard let image = strongSelf.profileImageView.image,

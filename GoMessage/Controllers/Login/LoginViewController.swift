@@ -108,7 +108,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(logInButton)
-        scrollView.addSubview(googleButton)
+//        scrollView.addSubview(googleButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -132,10 +132,9 @@ class LoginViewController: UIViewController {
                                    y: passwordField.bottom + 20,
                                    width: scrollView.width - 60,
                                    height: 42)
-        googleButton.frame = CGRect(x: 30, y: logInButton.bottom + 15,
-                                    width: scrollView.width - 60,
-                                    height: 42)
-        
+//        googleButton.frame = CGRect(x: 30, y: logInButton.bottom + 15,
+//                                    width: scrollView.width - 60,
+//                                    height: 42)
     }
     
     @objc private func didTapRegister() {
@@ -173,6 +172,8 @@ class LoginViewController: UIViewController {
             }
             
             let user = result.user
+            UserDefaults.standard.set(email, forKey: "email")
+            
             print("Logged In user:\(user)")
             strongSelf.navigationController?.dismiss(animated: true)
         }
@@ -240,6 +241,9 @@ extension LoginViewController {
                 
                 guard let user = res?.user else { return }
                 print(user)
+                
+//                UserDefaults.standard.set(email, forKey: "email")
+
             }
         }
     }
