@@ -54,7 +54,7 @@ extension DataBaseManager {
                         "email": user.safeEmail
                     ]
                     usersCollection.append(newElement)
-                    self.dataBase.child("users ").setValue(usersCollection) { error, _ in
+                    self.dataBase.child("users").setValue(usersCollection) { error, _ in
                         guard error == nil else {
                             completion(false)
                             return
@@ -64,7 +64,7 @@ extension DataBaseManager {
                 } else {
                     //create that array
                     let newCollection: [[String: String]] = [["name": user.firstName + " " + user.lastName, "email": user.safeEmail]]
-                    self.dataBase.child("users ").setValue(newCollection) { error, _ in
+                    self.dataBase.child("users").setValue(newCollection) { error, _ in
                         guard error == nil else {
                             completion(false)
                             return
@@ -81,6 +81,9 @@ extension DataBaseManager {
  
     public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
         dataBase.child("users").observeSingleEvent(of: .value) { snapshot in
+            if !snapshot.exists() {
+                print("no user found")
+            }
             guard let value = snapshot.value as? [[String:String]] else {
                 completion(.failure(DataBaseError.failledToFetch))
                 return

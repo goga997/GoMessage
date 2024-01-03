@@ -231,7 +231,8 @@ class RegisterViewController: UIViewController {
                     }
                 })
                 
-                strongSelf.navigationController?.dismiss(animated: true)
+//                strongSelf.navigationController?.dismiss(animated: true)
+                print("Succes\nGo and Log In, Profile Created")
             }
         }
     }
