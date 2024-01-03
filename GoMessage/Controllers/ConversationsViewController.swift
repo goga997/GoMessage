@@ -42,12 +42,26 @@ class ConversationsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         validateAuth()
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc private func didTapCompose() {
         let newConvVC = NewConversationViewController()
+        newConvVC.completion = { [weak self] result in
+            self?.createNewConversation(result: result)
+            self?.tabBarController?.tabBar.isHidden = true
+        }
         let navVC = UINavigationController(rootViewController: newConvVC)
         present(navVC, animated: true)
+    }
+    
+    private func createNewConversation(result: [String: String]) {
+        guard let name = result["name"], let email = result["email"] else { return }
+        let chatVC = ChatViewController(with: email)
+        chatVC.isNewConversation = true
+        chatVC.title = name
+        chatVC.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     private func setDelegates() {
@@ -90,10 +104,13 @@ extension ConversationsViewController {
 //MainTableViewProtocol
 extension ConversationsViewController: MainTableViewProtocol {
     func performPush() {
-        let chatVC = ChatViewController()
+        let chatVC = ChatViewController(with: "gsds@gmail.com")
         chatVC.title = "Ion Mira"
         chatVC.navigationItem.largeTitleDisplayMode = .never
+        self.tabBarController?.tabBar.isHidden = true
         navigationController?.pushViewController(chatVC, animated: true)
+//        chatVC.modalPresentationStyle = .fullScreen
+//        present(chatVC, animated: true)
     }
 }
 

@@ -19,8 +19,8 @@ final class DataBaseManager {
     }
 }
 
+// MARK: - Account Mgmt
 extension DataBaseManager {
-    
     public func userExists(with email: String, completion: @escaping ((Bool) -> Void)) {
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
@@ -76,9 +76,7 @@ extension DataBaseManager {
             completion(true)
         }
     }
-    
-    
- 
+     
     public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
         dataBase.child("users").observeSingleEvent(of: .value) { snapshot in
             if !snapshot.exists() {
@@ -98,20 +96,26 @@ extension DataBaseManager {
     }
 }
 
-
-struct ChatAppUser {
-    let firstName: String
-    let lastName: String
-    let emailAdress: String
-    
-    var safeEmail: String {
-        var safeEmail = emailAdress.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        return safeEmail
+//MARK: - Sending Messages / Conversations
+extension DataBaseManager {
+    ///Creates a new conversation with target user emamil and first message sent
+    public func createNewConversation(with otherUserErmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+        
     }
     
-    var profilePictureFileName: String {
-        return "\(safeEmail)_profile_picture.png"
+    /// Fetches and returns all conversations for the user with passed in email
+    public func getAllConversations(for email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
     }
+    
+    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    
+    /// Sends a message with target conversation and message
+    public func sendMessage(to conversation: String, message: Message, completion: @escaping (Bool) -> Void ) {
+        
+    }
+    
 }
 

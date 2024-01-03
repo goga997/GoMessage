@@ -10,6 +10,8 @@ import JGProgressHUD
 
 class NewConversationViewController: UIViewController {
     
+    public var completion: (([String: String]) -> (Void))?
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     private var users = [[String: String]]()
@@ -34,7 +36,7 @@ class NewConversationViewController: UIViewController {
         label.text = "No Results"
         label.isHidden = true
         label.textAlignment = .center
-        label.textColor = .green
+        label.textColor = .red
         label.font = .systemFont(ofSize: 21, weight: .medium)
         return label
     }()
@@ -71,8 +73,9 @@ class NewConversationViewController: UIViewController {
     
 }
 
+//MARK: -  UISearchBarDelegate
+
 extension NewConversationViewController: UISearchBarDelegate {
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.replacingOccurrences(of: " ", with: "").isEmpty else { return }
         searchBar.resignFirstResponder()
@@ -143,6 +146,11 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         //start conversation
+        let targetUserData = results[indexPath.row]
+        dismiss(animated: true) { [weak self] in
+            self?.completion?(targetUserData)
+
+        }
     }
     
 }
