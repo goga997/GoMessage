@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ChatAppUser {
     let firstName: String
     let lastName: String
