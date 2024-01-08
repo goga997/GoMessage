@@ -99,7 +99,7 @@ extension DataBaseManager {
 //MARK: - Sending Messages / Conversations
 extension DataBaseManager {
     ///Creates a new conversation with target user emamil and first message sent
-    public func createNewConversation(with otherUserErmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+    public func createNewConversation(with otherUserErmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
         guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String else { return }
         let safeEmail = DataBaseManager.safeEmail(emailAdress: currentEmail)
         let ref = dataBase.child("\(safeEmail)")
@@ -143,6 +143,7 @@ extension DataBaseManager {
             let newConversationData: [String: Any] = [
                 "id": conversationID,
                 "other_user_email": otherUserErmail,
+                "name": name,
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -160,7 +161,7 @@ extension DataBaseManager {
                         completion(false)
                         return
                     }
-                    self?.finishCreatingConversation(conversationID: conversationID, firstMessage: firstMessage, completion: completion)
+                    self?.finishCreatingConversation(name: name, conversationID: conversationID, firstMessage: firstMessage, completion: completion)
                 }
             } else {
                 //create new convs
@@ -173,13 +174,13 @@ extension DataBaseManager {
                         completion(false)
                         return
                     }
-                    self?.finishCreatingConversation(conversationID: conversationID, firstMessage: firstMessage, completion: completion)
+                    self?.finishCreatingConversation(name: name, conversationID: conversationID, firstMessage: firstMessage, completion: completion)
                 }
             }
         }
     }
     
-    private func finishCreatingConversation(conversationID: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+    private func finishCreatingConversation(name: String, conversationID: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
         let messageDate = firstMessage.sentDate
         let dateString = ChatViewController.dateFormatter.string(from: messageDate)
         
@@ -220,8 +221,8 @@ extension DataBaseManager {
             "content": message,
             "date": dateString,
             "sender_email": currentUserEmail,
-            "is_read": false
-                
+            "is_read": false,
+            "name": name
         ]
         
         let value: [String: Any] = [
