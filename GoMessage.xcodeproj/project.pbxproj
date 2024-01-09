@@ -36,6 +36,7 @@
 		DF15B9AB2B3F1D2200FE178B /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DF15B9AA2B3F1D2200FE178B /* SDWebImageMapKit */; };
 		DF15B9AD2B3F218400FE178B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9AC2B3F218400FE178B /* ChatViewController.swift */; };
 		DF15B9AF2B3F50B200FE178B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF15B9AE2B3F50B200FE178B /* StorageManager.swift */; };
+		DFB5A9832B4C393F00519829 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB5A9822B4C393F00519829 /* Conversation.swift */; };
 		DFEE2DAF2B3D8A0600225DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */; };
 		DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */; };
 		DFEE2DB32B3D8A0600225DA4 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE2DB22B3D8A0600225DA4 /* ConversationsViewController.swift */; };
@@ -59,6 +60,7 @@
 		DF15B9972B3EDE5700FE178B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF15B9AC2B3F218400FE178B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		DF15B9AE2B3F50B200FE178B /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		DFB5A9822B4C393F00519829 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		DFEE2DAB2B3D8A0600225DA4 /* GoMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE2DAE2B3D8A0600225DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE2DB02B3D8A0600225DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				DF0CEDD42B45E06100FBFF77 /* ChatUserModel.swift */,
+				DFB5A9822B4C393F00519829 /* Conversation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				DF15B9492B3D8F9C00FE178B /* ProfileViewController.swift in Sources */,
 				DFEE2DB12B3D8A0600225DA4 /* SceneDelegate.swift in Sources */,
 				DF0CEDD52B45E06100FBFF77 /* ChatUserModel.swift in Sources */,
+				DFB5A9832B4C393F00519829 /* Conversation.swift in Sources */,
 				DF15B9912B3EB28600FE178B /* ChatCell.swift in Sources */,
 				DF15B9432B3D8F6A00FE178B /* PhotoViewerViewController.swift in Sources */,
 				DF15B9AD2B3F218400FE178B /* ChatViewController.swift in Sources */,

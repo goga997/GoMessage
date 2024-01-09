@@ -6,41 +6,37 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatCell: UITableViewCell {
             
     static let idTableViewCell = "idTableViewCell"
     
-    private let backgroundCell: UIView = {
-       let view = UIView()
-        view.layer.cornerRadius = 20
-        view.backgroundColor = .gray
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let backgroundImageCell: UIView = {
-       let view = UIView()
-        view.layer.cornerRadius = 10
-        view.backgroundColor = .darkGray
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let workoutImageView: UIImageView = {
+    private let userImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "person")?.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 50
+        imageView.layer.masksToBounds = true
         imageView.tintColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let workoutNameLabel: UILabel = {
+    private let userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name Surname"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.font = .systemFont(ofSize: 21, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let userMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "my message is right here, because it is my first one"
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 19, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -49,53 +45,45 @@ class ChatCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        setUpViews()
-        setConstraints()
+        contentView.addSubview(userImageView)
+        contentView.addSubview(userNameLabel)
+        contentView.addSubview(userMessageLabel)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //SETUP VIEW
-    private func setUpViews() {
-        backgroundColor = .clear
-        selectionStyle = .none
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        userImageView.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         
-        addSubview(backgroundCell)
-        backgroundCell.addSubview(backgroundImageCell)
-        backgroundImageCell.addSubview(workoutImageView)
-        backgroundCell.addSubview(workoutNameLabel)
+        userNameLabel.frame = CGRect(x: userImageView.right + 10,
+                                     y: 10,
+                                     width: contentView.width - 20 - userImageView.width,
+                                     height: (contentView.height - 20) / 2)
         
+        userMessageLabel.frame = CGRect(x: userImageView.right + 10,
+                                        y: userNameLabel.bottom + 10,
+                                        width: contentView.width - 20 - userImageView.width,
+                                        height: (contentView.height - 20) / 2)
     }
     
-}
-
-//MARK: - CONSTRAINTS
-
-extension ChatCell {
-    private func setConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundCell.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            backgroundCell.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            backgroundCell.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            backgroundCell.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            backgroundImageCell.centerYAnchor.constraint(equalTo: backgroundCell.centerYAnchor),
-            backgroundImageCell.leadingAnchor.constraint(equalTo: backgroundCell.leadingAnchor, constant: 10),
-            backgroundImageCell.heightAnchor.constraint(equalToConstant: 52),
-            backgroundImageCell.widthAnchor.constraint(equalToConstant: 52),
-            
-            workoutImageView.topAnchor.constraint(equalTo: backgroundImageCell.topAnchor, constant: 10),
-            workoutImageView.leadingAnchor.constraint(equalTo: backgroundImageCell.leadingAnchor, constant: 10),
-            workoutImageView.trailingAnchor.constraint(equalTo: backgroundImageCell.trailingAnchor, constant: -10),
-            workoutImageView.bottomAnchor.constraint(equalTo: backgroundImageCell.bottomAnchor, constant: -10),
-            
-            workoutNameLabel.topAnchor.constraint(equalTo: backgroundCell.topAnchor, constant: 10),
-            workoutNameLabel.leadingAnchor.constraint(equalTo: backgroundImageCell.trailingAnchor, constant: 20),
-            workoutNameLabel.trailingAnchor.constraint(equalTo: backgroundCell.trailingAnchor, constant: -10),
-            
-        ])
+    public func configure(with model: Conversation) {
+        self.userMessageLabel.text = model.latestMessage.text
+        self.userNameLabel.text = model.name
+        
+        let path = "images/\(model.otherUSerEmail)_profile_picture.png"
+        StorageManager.shared.downloadURL(for: path) { [weak self] result in
+            switch result {
+            case .success(let url):
+                DispatchQueue.main.async {
+                    self?.userImageView.sd_setImage(with: url, completed: nil)
+                }
+            case .failure(let error):
+                print("faillet to get image URl: \(error)")
+            }
+        }
     }
+    
 }

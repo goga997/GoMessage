@@ -57,7 +57,8 @@ class ConversationsViewController: UIViewController {
     
     private func createNewConversation(result: [String: String]) {
         guard let name = result["name"], let email = result["email"] else { return }
-        let chatVC = ChatViewController(with: email)
+        
+        let chatVC = ChatViewController(with: email, id: nil)
         chatVC.isNewConversation = true
         chatVC.title = name
         chatVC.navigationItem.largeTitleDisplayMode = .never
@@ -103,9 +104,10 @@ extension ConversationsViewController {
 
 //MainTableViewProtocol
 extension ConversationsViewController: MainTableViewProtocol {
-    func performPush() {
-        let chatVC = ChatViewController(with: "gsds@gmail.com")
-        chatVC.title = "Ion Mira"
+    
+    func performPush(model: Conversation) {
+        let chatVC = ChatViewController(with: model.otherUSerEmail, id: model.id)
+        chatVC.title = model.name
         chatVC.navigationItem.largeTitleDisplayMode = .never
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.pushViewController(chatVC, animated: true)
