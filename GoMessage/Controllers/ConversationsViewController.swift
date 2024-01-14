@@ -43,6 +43,7 @@ class ConversationsViewController: UIViewController {
         
         validateAuth()
         self.tabBarController?.tabBar.isHidden = false
+        mainTableView.reloadData()
     }
     
     @objc private func didTapCompose() {

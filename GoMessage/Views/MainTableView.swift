@@ -59,7 +59,6 @@ class MainTableView: UITableView {
             }
         }
     }
-    
 }
 
 //DATA SOURCE
