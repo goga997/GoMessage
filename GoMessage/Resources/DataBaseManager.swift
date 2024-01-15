@@ -7,6 +7,8 @@
 
 import Foundation
 import FirebaseDatabase
+import MessageKit
+import UIKit
 
 final class DataBaseManager {
     static let shared = DataBaseManager()
@@ -326,14 +328,28 @@ extension DataBaseManager {
                     return nil
                 }
                 
+                var kind: MessageKind?
+                if type == "photo" {
+                    //photo
+                    guard let imageURL = URL(string: content),
+                          let placeHolder = UIImage(systemName: "plus") else { return nil }
+                    let media = Media(url: imageURL, image: nil, placeholderImage: placeHolder, size: CGSize(width: 300, height: 300))
+                    kind = .photo(media)
+                } else {
+                    //text
+                    kind = .text(content)
+                }
+                
                 let sender = Sender(photoURL: "",
                                     senderId: senderEmail,
                                     displayName: name)
                 
+                guard let finalKind = kind else { return nil }
+                
                 return Message(sender: sender,
                                messageId: messageId,
                                sentDate: date,
-                               kind: .text(content))
+                               kind: finalKind)
             }
             completion(.success(messages))
         }
@@ -367,7 +383,10 @@ extension DataBaseManager {
                 message = messageText
             case .attributedText(_):
                 break
-            case .photo(_):
+            case .photo(let mediaItem):
+                if let targetUrlString = mediaItem.url?.absoluteString {
+                    message = targetUrlString
+                }
                 break
             case .video(_):
                 break
@@ -401,6 +420,7 @@ extension DataBaseManager {
                 "is_read": false,
                 "name": name
             ]
+            
             currentMessages.append(newMessageEntry)
             strongSelf.dataBase.child("\(conversation)/messages").setValue(currentMessages) {  error, _  in
                 guard error == nil else {

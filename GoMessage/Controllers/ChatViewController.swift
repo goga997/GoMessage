@@ -8,6 +8,7 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
+import SDWebImage
 
 struct Message: MessageType {
     var sender: SenderType
@@ -94,6 +95,7 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messageCellDelegate = self
         messageInputBar.delegate = self
         
         messagesCollectionView.reloadData()
@@ -203,7 +205,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
               let name = self.title,
               let selfSender = selfSender else { return }
         
-        let fileName = "photo_message_" + messageID
+        let fileName = "photo_message_" + messageID.replacingOccurrences(of: " ", with: "-") + ".png"
         
         //Upload image
         StorageManager.shared.uploadMessagePhoto(with: imageData, fileName: fileName) { [weak self] result in
@@ -309,6 +311,35 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
         return messages.count
+    }
+    
+    func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        guard let message = message as? Message else { return }
+        
+        switch message.kind {
+        case .photo(let media):
+            guard let imageUrl = media.url else { return }
+            imageView.sd_setImage(with: imageUrl, completed: nil)
+        default:
+            break
+        }
+    }
+}
+
+extension ChatViewController: MessageCellDelegate {
+    func didTapImage(in cell: MessageCollectionViewCell) {
+        guard let indexPath = messagesCollectionView.indexPath(for: cell) else { return }
+        let message = messages[indexPath.section]
+        
+        switch message.kind {
+        case .photo(let media):
+            guard let imageUrl = media.url else { return }
+            let vc = PhotoViewerViewController(with: imageUrl)
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
+
     }
 }
 
