@@ -208,6 +208,7 @@ class LoginViewController: UIViewController {
 
 }
 
+//MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -223,7 +224,6 @@ extension LoginViewController: UITextFieldDelegate {
 
 //MARK: - Google Sign In
 extension LoginViewController {
-    
     func signInWithGoogle() {
         //get app client ID
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -258,9 +258,7 @@ extension LoginViewController {
                 print(user)
                 
 //                UserDefaults.standard.set(email, forKey: "email")
-
             }
         }
     }
-    
 }
